@@ -1,4 +1,4 @@
-﻿namespace API;
+﻿namespace API.DTOs;
 public class UserDTO
 {
     public string Username { get; set; }
