@@ -1,1 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
+.tab-panel {
+    border: 1px solid;
+    padding: 10px;
+    border-radius: 4px;
+  }
+  
+  .member-tabset > .nav-tabs > li.open > a, .member-tabset > .nav-tabs > li:hover > a {
+    border: 0 !important;
+    background: none !important;
+
+  }
+    
+  .member-tabset > .nav-tabs > li.open .dropdown-menu, .member-tabset > .nav-tabs > li:hover .dropdown-menu {
+    margin-top: 0px;
+  }
+  
+  .member-tabset > .nav-tabs > li.active {
+    position: relative;
+  }
+  
+  .member-tabset > .nav-tabs > li.active > a {
+    border: 0 !important;
+  }
+  
+  .member-tabset > .tab-content {
+    margin-top: -3px;
+    padding: 15px 0;
+  }
+  
+  .nav-tabs {
+      --bs-nav-tabs-border-width: 0px;
+  }
+
+  .gallery {
+    height: 500px;
+    background-color: white;
+  }
