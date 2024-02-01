@@ -2,3 +2,10 @@
     cursor: pointer;
     text-decoration: none;
 }
+
+.user-photo {
+    max-height: 50px;
+    border: 2px solid white;
+    display: inline;
+    margin-right: 10px;
+}
