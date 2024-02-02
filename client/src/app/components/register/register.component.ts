@@ -15,12 +15,12 @@ export class RegisterComponent {
   maxDate: Date = new Date();
   validationErrors: string[] | undefined;
 
-  constructor(private accountService: AccountService, private toastr: ToastrService, 
+  constructor(private accountService: AccountService, private toastr: ToastrService,
     private fb: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
-		this.initializeForm();
-    this.maxDate.setFullYear(this.maxDate.getFullYear() - 18); 
+    this.initializeForm();
+    this.maxDate.setFullYear(this.maxDate.getFullYear() - 13);
   }
 
   initializeForm() {
@@ -41,20 +41,20 @@ export class RegisterComponent {
 
   matchValues(matchTo: string): ValidatorFn {
     return (control: AbstractControl) => {
-      return control?.value === control?.parent?.get(matchTo)?.value ? null : {isMatching: true}
+      return control?.value === control?.parent?.get(matchTo)?.value ? null : { isMatching: true }
     }
   }
 
   register() {
     const dob = this.GetDateOnly(this.registerForm.controls['dateOfBirth'].value)
-    const values = {...this.registerForm.value, dateOfBirth: this.GetDateOnly(dob)}
+    const values = { ...this.registerForm.value, dateOfBirth: this.GetDateOnly(dob) }
     this.accountService.register(values).subscribe({
       next: () => {
         this.router.navigateByUrl('/members');
       },
       error: error => {
         this.validationErrors = error;
-      } 
+      }
     })
   }
 
@@ -65,6 +65,6 @@ export class RegisterComponent {
   private GetDateOnly(dob: string | undefined) {
     if (!dob) return;
     let theDob = new Date(dob);
-    return new Date(theDob.setMinutes(theDob.getMinutes()-theDob.getTimezoneOffset())).toISOString().slice(0,10);
+    return new Date(theDob.setMinutes(theDob.getMinutes() - theDob.getTimezoneOffset())).toISOString().slice(0, 10);
   }
 }
