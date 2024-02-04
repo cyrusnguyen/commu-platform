@@ -89,10 +89,22 @@ export class MembersService {
     return this.http.delete(this.baseUrl + 'users/delete-photo/' + photoId);
   }
 
+  sendRequest(username: string) {
+    return this.http.post(this.baseUrl + 'requests/' + username, {})
+  }
+
+  getRequests(predicate: string, pageNumber: number, pageSize: number) {
+    let params = this.getPaginationHeaders(pageNumber, pageSize);
+
+    params = params.append('predicate', predicate);
+
+    return this.getPaginatedResults<Member[]>(this.baseUrl + 'requests', params);
+  }
+
   private getPaginatedResults<T>(url: string, params: HttpParams) {
     const paginatedResults: PaginatedResults<T> = new PaginatedResults<T>;
 
-    return this.http.get<T>(this.baseUrl + 'users', { observe: 'response', params }).pipe(
+    return this.http.get<T>(url, { observe: 'response', params }).pipe(
       map(response => {
         if (response.body) {
           paginatedResults.result = response.body;

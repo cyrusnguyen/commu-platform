@@ -7,7 +7,7 @@
                         class="fa fa-address-card"></i></button>
             </li>
             <li class="list-inline-item">
-                <button class="btn btn-primary"><i class="fa fa-user-plus"></i></button>
+                <button (click)="sendRequest(member)" class="btn btn-primary"><i class="fa fa-user-plus"></i></button>
             </li>
             <li class="list-inline-item">
                 <button routerLink="/members/{{member.userName}}" [queryParams]="{tab: 'Messages'}"
