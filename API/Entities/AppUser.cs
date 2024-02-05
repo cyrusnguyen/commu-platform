@@ -20,4 +20,6 @@ public class AppUser
     public List<Photo> Photos { get; set; } = new List<Photo>();
     public List<FriendRequest> RequestedByUsers { get; set; }
     public List<FriendRequest> RequestedUsers { get; set; }
+    public List<Message> MessageSent { get; set; }
+    public List<Message> MessageReceived { get; set; }
 }

@@ -22,6 +22,7 @@ public static class ApplicationServiceExtensions
         services.AddScoped<IPhotoService, PhotoService>();
         services.AddScoped<LogUserActivity>();
         services.AddScoped<IRequestsRepository, RequestsRepository>();
+        services.AddScoped<IMessageRepository, MessagesRepository>();
 
         return services;
     }
