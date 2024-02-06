@@ -9,6 +9,7 @@ import { MembersService } from 'src/app/services/members.service';
 import { MemberMessagesComponent } from '../member-messages/member-messages.component';
 import { MessageService } from 'src/app/services/message.service';
 import { Message } from 'src/app/models/message';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-member-detail',
@@ -26,7 +27,7 @@ export class MemberDetailComponent implements OnInit {
   messages: Message[] = [];
 
   constructor(private memberService: MembersService, private route: ActivatedRoute,
-    private messageService: MessageService) {
+    private messageService: MessageService, private toastr: ToastrService) {
   }
   ngOnInit(): void {
     this.route.data.subscribe({
@@ -68,5 +69,11 @@ export class MemberDetailComponent implements OnInit {
     for (const photo of this.member.photos) {
       this.images.push(new ImageItem({ src: photo.url, thumb: photo.url }))
     }
+  }
+
+  sendRequest() {
+    this.memberService.sendRequest(this.member.userName).subscribe({
+      next: () => this.toastr.success('Friend request sent to ' + this.member.knownAs)
+    });
   }
 }
