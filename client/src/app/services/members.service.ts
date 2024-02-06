@@ -22,10 +22,10 @@ export class MembersService {
   constructor(private http: HttpClient, private accountService: AccountService) {
     this.accountService.currentUser$.pipe(take(1)).subscribe({
       next: user => {
-        if (user) {
-          this.userParams = new UserParams();
-          this.user = user;
-        }
+
+        this.userParams = new UserParams();
+        this.user = user;
+
       }
     });
   }
@@ -46,6 +46,7 @@ export class MembersService {
   getMembers(userParams: UserParams) {
     const response = this.memberCache.get(Object.values(userParams).join('-'));
     if (response) return of(response);
+
 
     let params = getPaginationHeaders(userParams.pageNumber, userParams.pageSize);
     params = params.append('minAge', userParams.minAge);
