@@ -30,6 +30,7 @@ export class NavComponent {
         this.memberService.resetUserParams();
         this.memberService.memberCache.clear();
         this.router.navigateByUrl('/members');
+        this.model = {}
       }
     })
   }
