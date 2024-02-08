@@ -1,1 +1,22 @@
-<p>photo-management works!</p>
+<div class="row mb-3" *ngIf="photos">
+    <div class="col-6 col-md-4 col-lg-3" *ngFor="let photo of photos">
+        <div class="square-container">
+            <img src="{{photo.url}}" alt="photo of user"
+                class="img-thumbnail img-fluid img-thumbnail square-image mb-1">
+        </div>
+        <div class="text-center">
+            <button class="btn btn-success btn-sm" (click)="approvePhoto(photo.id)">
+                Approve
+            </button>
+            <button (click)="rejectPhoto(photo.id)" class="btn btn-sm btn-danger">Reject</button>
+        </div>
+        <h5 class="text-center" *ngIf="photo.username"><a
+                class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+                routerLink="/members/{{photo.username}}">
+                {{photo.username}}
+            </a></h5>
+
+    </div>
+</div>
+
+<h3 *ngIf="photos.length < 1"> No photo waiting for approval </h3>
