@@ -18,6 +18,8 @@ public class UnitOfWork : IUnitOfWork
 
     public IRequestsRepository LikesRepository => new RequestsRepository(_context);
 
+    public IPhotoRepository PhotosRepository => new PhotosRepository(_context);
+
     public async Task<bool> Complete()
     {
         return await _context.SaveChangesAsync() > 0;

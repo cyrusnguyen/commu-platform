@@ -12,4 +12,5 @@ public class Photo
 
     public int AppUserId { get; set; }
     public AppUser AppUser { get; set; }
+    public bool IsApproved { get; set; }
 }

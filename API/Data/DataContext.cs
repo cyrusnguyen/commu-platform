@@ -16,6 +16,7 @@ public class DataContext : IdentityDbContext<AppUser, AppRole, int,
     public DbSet<Message> Messages { get; set; }
     public DbSet<Group> Groups { get; set; }
     public DbSet<Connection> Connections { get; set; }
+    public DbSet<Photo> Photos { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -63,5 +64,9 @@ public class DataContext : IdentityDbContext<AppUser, AppRole, int,
             .HasOne(u => u.Sender)
             .WithMany(m => m.MessageSent)
             .OnDelete(DeleteBehavior.Restrict);
+
+        modelBuilder.Entity<Photo>()
+            .HasQueryFilter(u => u.IsApproved);
+
     }
 }
