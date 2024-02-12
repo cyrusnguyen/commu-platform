@@ -13,7 +13,11 @@ public static class IndentityServiceExtensions
     {
         services.AddIdentityCore<AppUser>(opt =>
         {
+            opt.Password.RequiredLength = 6;
+            opt.Password.RequireLowercase = false;
+            opt.Password.RequireUppercase = false;
             opt.Password.RequireNonAlphanumeric = false;
+            opt.Password.RequireDigit = false;
         })
             .AddRoles<AppRole>()
             .AddRoleManager<RoleManager<AppRole>>()
