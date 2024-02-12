@@ -7,7 +7,9 @@ Welcome to our Communication App, a dynamic platform designed to facilitate seam
 ## Demo
 
 https://commu-platform.fly.dev
-
+For testing:
+Username: tester
+Password: tester
 
 ## Features
 Our application boasts a range of features to elevate your communication experience:
