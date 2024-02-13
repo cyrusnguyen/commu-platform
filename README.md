@@ -7,9 +7,10 @@ Welcome to our Communication App, a dynamic platform designed to facilitate seam
 ## Demo
 
 https://commu-platform.fly.dev
+
 For testing:
-Username: tester
-Password: tester
+- Username: tester
+- Password: tester
 
 ## Features
 Our application boasts a range of features to elevate your communication experience:
@@ -38,28 +39,35 @@ Our application boasts a range of features to elevate your communication experie
 ![image](https://github.com/cyrusnguyen/commu-platform/assets/52537523/198d7bf9-66b0-418f-b1de-4eca7e4aad35)
 
 
-
-
 ## Tech Stack
 
 **Client:** Angular 16, Typescript, Bootstrap
 
 **Server:** C#, .NET Core 7, Docker, PostgreSQL
 
-
 ## Deployment
+- The project is live at: https://commu-platform.fly.dev
 
-To run this project using docker
 
+## Run the project locally
+### Through Docker
+To run this project locally using docker
+- Specify PostgreSQL connectionString in API/appsettings.json file (Server, port, user Id, password, database)
+- (if not connected to Postgres, please use docker to build one or use pgAdmin to generate one)
+- Sample connectionString:
 ```bash
-  docker build -t commapp .
+   "ConnectionStrings": {
+    "DefaultConnection": "Server=host.docker.internal; Port=5432; User Id=postgres; Password=postgres; Database=commapp"
+    },
+```
+- Build and run DockerFile
+```bash
+  docker build -t cyrusnguyen/commapp .
 ```
 ```bash
-  docker run -d -p 8080:80 datingapp
+  docker run --rm -it -p 8080:80 cyrusnguyen/commapp:latest
 ```
-
-## Run Locally
-
+### Locally
 Clone the project
 
 ```bash
@@ -71,20 +79,21 @@ Go to the project directory
 ```bash
   cd commu-platform
 ```
-Go to server side (cd API) and start the server
+
+
+First terminal to run client side and install dependencies:
 ```bash
-  dotnet run
+  cd client
 ```
-
-Another terminal to run client side (cd client) and install dependencies:
-
 ```bash
   npm install
 ```
 
-Start the client
-
+Create another terminal (server side) and start the server
 ```bash
-  ng serve
+  cd API
 ```
-
+```bash
+  dotnet run
+```
+Your app should be running in localhost:5001
